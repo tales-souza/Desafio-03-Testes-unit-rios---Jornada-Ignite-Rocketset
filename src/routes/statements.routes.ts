@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { BalanceTransferController } from '../modules/statements/useCases/balanceTransfer/BalanceTransferController';
 
 import { CreateStatementController } from '../modules/statements/useCases/createStatement/CreateStatementController';
 import { GetBalanceController } from '../modules/statements/useCases/getBalance/GetBalanceController';
@@ -9,12 +10,14 @@ const statementRouter = Router();
 const getBalanceController = new GetBalanceController();
 const createStatementController = new CreateStatementController();
 const getStatementOperationController = new GetStatementOperationController();
+const balanceTransferController = new BalanceTransferController();
 
 statementRouter.use(ensureAuthenticated);
 
 statementRouter.get('/balance', getBalanceController.execute);
 statementRouter.post('/deposit', createStatementController.execute);
 statementRouter.post('/withdraw', createStatementController.execute);
+statementRouter.post('/transfer/:user_receiver_id', balanceTransferController.handle);
 statementRouter.get('/:statement_id', getStatementOperationController.execute);
 
 export { statementRouter };

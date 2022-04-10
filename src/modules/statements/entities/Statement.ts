@@ -7,13 +7,10 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
+import { OperationType } from '../../Enums/OperationType';
 
 import { User } from '../../users/entities/User';
 
-enum OperationType {
-  DEPOSIT = 'deposit',
-  WITHDRAW = 'withdraw',
-}
 
 @Entity('statements')
 export class Statement {

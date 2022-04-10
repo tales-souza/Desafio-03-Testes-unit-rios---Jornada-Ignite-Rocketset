@@ -19,6 +19,7 @@ export class usersTable1616681812086 implements MigrationInterface {
           name: 'email',
           type: 'varchar',
           isUnique: true
+
         },
         {
           name: 'password',
