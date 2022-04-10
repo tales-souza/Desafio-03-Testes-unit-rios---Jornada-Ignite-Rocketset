@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe"
-import { OperationType } from "../../../Enums/OperationType"
+import { OperationType } from "../../Enums/OperationType"
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository"
 import { Statement } from "../../entities/Statement"
 import { IStatementsRepository } from "../../repositories/IStatementsRepository"
@@ -57,11 +57,14 @@ class BalanceTransferUseCase {
 
     /* Create Balance deposit Statement of user_receiver_id  */
 
+    console.log(userSender.id)
+
     const statementOperation =  await this.statementsRepository.create({
       amount,
       description,
       type: OperationType.TRANSFER,
-      user_id: userReceiver.id
+      user_id: userReceiver.id,
+      sender_id: userSender.id
     });
 
     return statementOperation;

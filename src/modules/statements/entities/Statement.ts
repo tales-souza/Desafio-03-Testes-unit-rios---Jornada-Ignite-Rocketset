@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { OperationType } from '../../Enums/OperationType';
+import { OperationType } from '../Enums/OperationType';
 
 import { User } from '../../users/entities/User';
 
@@ -19,6 +19,9 @@ export class Statement {
 
   @Column('uuid')
   user_id: string;
+
+  @Column("uuid")
+  sender_id?: string;
 
   @ManyToOne(() => User, user => user.statement)
   @JoinColumn({ name: 'user_id' })

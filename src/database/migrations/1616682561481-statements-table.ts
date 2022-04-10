@@ -15,6 +15,7 @@ export class accountsTable1616682561481 implements MigrationInterface {
           name: 'user_id',
           type: 'uuid',
         },
+
         {
           name: 'description',
           type: 'varchar',
